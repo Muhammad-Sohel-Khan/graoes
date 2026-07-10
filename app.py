@@ -12,9 +12,23 @@ options = webdriver.ChromeOptions()
 options.add_argument("--headless=new")
 options.add_argument("--no-sandbox")
 options.add_argument("--disable-dev-shm-usage")
+print("Python:", platform.python_version())
+print("OS:", platform.platform())
 
+print("Checking Chrome...")
+os.system("google-chrome --version")
 
+print("Checking Chromium...")
+os.system("chromium --version")
+
+print("Checking Chromium Browser...")
+os.system("chromium-browser --version")
+
+print("Creating driver...")
 driver = webdriver.Chrome(options=options)
+print("Driver created!")
+
+
 
 
 
