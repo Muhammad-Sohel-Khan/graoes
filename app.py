@@ -5,6 +5,7 @@ import time
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.service import Service
 import os
 import platform
 
@@ -12,6 +13,8 @@ options = webdriver.ChromeOptions()
 options.add_argument("--headless=new")
 options.add_argument("--no-sandbox")
 options.add_argument("--disable-dev-shm-usage")
+options.binary_location = "/usr/bin/chromium"
+
 print("Python:", platform.python_version())
 print("OS:", platform.platform())
 
@@ -25,8 +28,10 @@ print("Checking Chromium Browser...")
 os.system("chromium-browser --version")
 
 print("Creating driver...")
-driver = webdriver.Chrome(options=options)
+service = Service(executable_path="/usr/bin/chromedriver")
+driver = webdriver.Chrome(service=service, options=options)
 print("Driver created!")
+
 
 
 
